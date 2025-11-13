@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AI Detection Dashboard</title>
+</head>
+<body style="font-family: Arial, sans-serif; text-align: center; margin-top: 50px;">
+  <h1>🚀 Soil & Vegetation Detection</h1>
+
+  <form action="/predict/" method="post" enctype="multipart/form-data">
+    <p><input type="file" name="file" accept="image/*" required></p>
+
+    <p>
+      <select name="model_type">
+        <option value="soil">🌱 Soil Detection (YOLOv11)</option>
+        <option value="vegetation">🌿 Vegetation Detection (YOLOv8)</option>
+      </select>
+    </p>
+
+    <p><button type="submit">Run Detection</button></p>
+  </form>
+
+  {% if soil_type %}
+    <h3>✅ Detected Type: {{ soil_type }}</h3>
+  {% endif %}
+
+  {% if result_image %}
+    <img src="{{ result_image }}" alt="Result Image" width="500">
+  {% endif %}
+</body>
+</html>
